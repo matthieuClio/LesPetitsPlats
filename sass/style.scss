@@ -1,0 +1,21 @@
+
+/* Bootstrap personalization */
+@import "./bootstrap/variables_overrides";
+
+/* Bootstrap */
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+/* Base */
+@import "./base/base";
+
+// /* Utils */
+// @import "./utils/utils";
+
+// /* Layout */
+@import "./layout/layout";
+
+/* Components */
+@import "./components/components";
+
+/* Pages */
+@import "./pages/pages";

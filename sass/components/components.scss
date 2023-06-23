@@ -1,0 +1,30 @@
+.navbar-custom-comp {
+    width: 100%;
+    border: 2px solid white;
+
+    &__title-h1 {
+        border: 2px solid orange;
+
+        &__logo-design {
+            display: inline-block;
+            position: relative;
+            width: 15px;
+            height: 15px;
+            border: 2px solid white;
+
+            &__secondary {
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                margin: auto;
+                width: 9px;
+                height: 9px;
+                border: 1px solid white;
+                background-color: white;
+            }
+        }
+    }
+}

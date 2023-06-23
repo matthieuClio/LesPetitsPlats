@@ -1,0 +1,22 @@
+/* Index page */
+
+.background-pages {
+    z-index: -1;
+    position: absolute;
+    border: 2px solid blue;
+    height: 100%;
+    width: 100%;
+}
+
+.background-pages img {
+    height: 100%;
+    object-fit: cover;
+    border: 2px solid green;
+}
+
+.title-h2-page {
+    border: 2px solid orange;
+    width: 500px;
+    margin: auto;
+    margin-top: 150px;
+}
