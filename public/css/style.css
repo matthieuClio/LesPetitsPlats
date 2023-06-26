@@ -11939,8 +11939,27 @@ header {
   background-color: white;
 }
 
+.search-container-comp {
+  display: inline;
+  border: 2px solid red;
+}
+.search-container-comp__search-inp-comp {
+  border: none;
+  width: 700px;
+  font-size: 14px;
+}
+.search-container-comp__search-button-comp {
+  position: absolute;
+  top: -6.5px;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: #1B1B1B;
+}
+
 /* Pages */
-/* Index page */
+/* Page index */
 .background-pages {
   z-index: -1;
   position: absolute;
@@ -11957,9 +11976,9 @@ header {
 
 .title-h2-page {
   border: 2px solid orange;
-  width: 500px;
   margin: auto;
   margin-top: 150px;
+  width: 500px;
 }
 
 /*# sourceMappingURL=style.css.map */

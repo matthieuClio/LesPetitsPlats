@@ -28,3 +28,24 @@
         }
     }
 }
+
+.search-container-comp {
+    display: inline;
+    border: 2px solid red;
+
+    &__search-inp-comp {
+        border: none;
+        width: 700px;
+        font-size: 14px;
+    }
+    
+    &__search-button-comp {
+        position: absolute;
+        top: -6.5px;
+        right: 5px;
+        width: 40px;
+        height: 40px;
+        border: none;
+        background-color: $icon-background;
+    }
+}
