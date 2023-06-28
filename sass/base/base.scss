@@ -32,14 +32,33 @@ h1, h2, h3, h4 {
     font-family: 'Anton-Regular';
 }
 
+h3 {
+    font-size: 19px;
+}
+
+h4 {
+    font-family: 'Manrope-Regular';
+    font-size: 14px;
+}
+
 img {
     width: 100%;
 }
 
 ul {
+    margin: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
     list-style-type: none;
 }
 
 a {
     text-decoration: none;
+}
+
+figure {
+    margin: 0;
 }

@@ -1,6 +1,5 @@
 /* Page index */
-
-.background-pages {
+.hero-pages {
     z-index: -1;
     position: absolute;
     border: 2px solid blue;
@@ -8,7 +7,7 @@
     width: 100%;
 }
 
-.background-pages img {
+.hero-pages img {
     height: 100%;
     object-fit: cover;
     border: 2px solid green;
@@ -19,4 +18,15 @@
     margin: auto;
     margin-top: 150px;
     width: 500px;
+}
+
+.background-page {
+    padding-right: 100px;
+    padding-left: 100px;
+    background-color: $background-container-page;
+}
+
+.info-search-secondary {
+    width: auto;
+    border: 2px solid red;
 }

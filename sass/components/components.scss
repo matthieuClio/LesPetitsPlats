@@ -40,12 +40,96 @@
     }
     
     &__search-button-comp {
-        position: absolute;
         top: -6.5px;
         right: 5px;
         width: 40px;
         height: 40px;
         border: none;
-        background-color: $icon-background;
+        background-color: $search-icon-background-comp;
+    }
+}
+
+.search-secondary-comp {
+    height: 50px;
+    // height: 200px;
+    width: 200px;
+    background-color: $search-secondary-background-comp;
+
+    &__li-title-comp {
+        height: 50px;
+        background-color: purple;
+    }
+
+    &__icon-chevron-comp {
+        top: 10px;
+        right: 0;
+        height: 20px;
+        border:2px solid red;
+    }
+
+    &__input-comp {
+        width: 100%;
+        height: 20px;
+        border: none;
+        border: 1px solid $search-secondary-input;
+    }
+
+    &__icon-search-comp {
+        top: 4px;
+        right: 5px;
+        height: 25px;
+        color: $search-secondary-input-icon;
+    }
+
+    &__icon-close-comp {
+        top: 5px;
+        right: 25px;
+        height: 25px;
+        color: $search-secondary-input-icon;
+    }
+
+    &__items-comp {
+        font-size: 14px;
+    }
+}
+
+.tag-comp {
+    display: inline-block;
+    width: auto;
+    background-color: $tag-background-comp;
+}
+
+.receipt-comp {
+    width: 300px;
+    height: 650px;
+    border: 2px solid purple;
+    background-color: $receipt-background-comp;
+
+    &__figure {
+        border: 2px solid blue;
+        height: 200px;
+
+        &__image {
+            border: 2px solid orange;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__time {
+        top: 0;
+        right: 0;
+        background-color: $receipt-time-comp;
+    }
+
+    &__info {    
+        &__h4 {
+            color: $receipt-title-comp;
+        }
+
+        &__details {
+            width: 120px;
+            border: 2px solid red;
+        }
     }
 }

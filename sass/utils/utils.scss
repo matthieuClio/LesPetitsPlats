@@ -1,2 +1,28 @@
+// - Variable -
+// Background
+$background-container-page: #EDEDED;
+
 // Component search
-$icon-background: #1B1B1B;
+$search-icon-background-comp: #1B1B1B;
+
+// Component search secondary
+$search-secondary-background-comp: #FFFFFF;
+$search-secondary-input: #C6C6C6;
+$search-secondary-input-icon: #7A7A7A;
+
+// Component tag
+$tag-background-comp: #FFD15B;
+
+// Component receipt
+$receipt-background-comp: #FFFFFF;
+$receipt-time-comp: #FFD15B;
+$receipt-title-comp: #7A7A7A; 
+
+/* Factored */
+.no-padding {
+    padding: 0;
+}
+
+.font-size-13 {
+    font-size: 14px;
+}

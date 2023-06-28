@@ -11892,16 +11892,44 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
   font-family: "Anton-Regular";
 }
 
+h3, .h3 {
+  font-size: 19px;
+}
+
+h4, .h4 {
+  font-family: "Manrope-Regular";
+  font-size: 14px;
+}
+
 img {
   width: 100%;
 }
 
 ul {
+  margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-inline-start: 0;
   list-style-type: none;
 }
 
 a {
   text-decoration: none;
+}
+
+figure {
+  margin: 0;
+}
+
+/* Factored */
+.no-padding {
+  padding: 0;
+}
+
+.font-size-13 {
+  font-size: 14px;
 }
 
 header {
@@ -11949,7 +11977,6 @@ header {
   font-size: 14px;
 }
 .search-container-comp__search-button-comp {
-  position: absolute;
   top: -6.5px;
   right: 5px;
   width: 40px;
@@ -11958,9 +11985,80 @@ header {
   background-color: #1B1B1B;
 }
 
+.search-secondary-comp {
+  height: 50px;
+  width: 200px;
+  background-color: #FFFFFF;
+}
+.search-secondary-comp__li-title-comp {
+  height: 50px;
+  background-color: purple;
+}
+.search-secondary-comp__icon-chevron-comp {
+  top: 10px;
+  right: 0;
+  height: 20px;
+  border: 2px solid red;
+}
+.search-secondary-comp__input-comp {
+  width: 100%;
+  height: 20px;
+  border: none;
+  border: 1px solid #C6C6C6;
+}
+.search-secondary-comp__icon-search-comp {
+  top: 4px;
+  right: 5px;
+  height: 25px;
+  color: #7A7A7A;
+}
+.search-secondary-comp__icon-close-comp {
+  top: 5px;
+  right: 25px;
+  height: 25px;
+  color: #7A7A7A;
+}
+.search-secondary-comp__items-comp {
+  font-size: 14px;
+}
+
+.tag-comp {
+  display: inline-block;
+  width: auto;
+  background-color: #FFD15B;
+}
+
+.receipt-comp {
+  width: 300px;
+  height: 650px;
+  border: 2px solid purple;
+  background-color: #FFFFFF;
+}
+.receipt-comp__figure {
+  border: 2px solid blue;
+  height: 200px;
+}
+.receipt-comp__figure__image {
+  border: 2px solid orange;
+  height: 100%;
+  object-fit: cover;
+}
+.receipt-comp__time {
+  top: 0;
+  right: 0;
+  background-color: #FFD15B;
+}
+.receipt-comp__info__h4 {
+  color: #7A7A7A;
+}
+.receipt-comp__info__details {
+  width: 120px;
+  border: 2px solid red;
+}
+
 /* Pages */
 /* Page index */
-.background-pages {
+.hero-pages {
   z-index: -1;
   position: absolute;
   border: 2px solid blue;
@@ -11968,7 +12066,7 @@ header {
   width: 100%;
 }
 
-.background-pages img {
+.hero-pages img {
   height: 100%;
   object-fit: cover;
   border: 2px solid green;
@@ -11979,6 +12077,17 @@ header {
   margin: auto;
   margin-top: 150px;
   width: 500px;
+}
+
+.background-page {
+  padding-right: 100px;
+  padding-left: 100px;
+  background-color: #EDEDED;
+}
+
+.info-search-secondary {
+  width: auto;
+  border: 2px solid red;
 }
 
 /*# sourceMappingURL=style.css.map */
