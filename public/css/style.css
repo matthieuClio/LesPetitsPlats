@@ -12029,7 +12029,7 @@ header {
 }
 
 .receipt-comp {
-  width: 300px;
+  width: auto;
   height: 650px;
   border: 2px solid purple;
   background-color: #FFFFFF;
@@ -12052,7 +12052,7 @@ header {
   color: #7A7A7A;
 }
 .receipt-comp__info__details {
-  width: 120px;
+  width: 100px;
   border: 2px solid red;
 }
 

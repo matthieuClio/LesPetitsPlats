@@ -100,7 +100,7 @@
 }
 
 .receipt-comp {
-    width: 300px;
+    width: auto;
     height: 650px;
     border: 2px solid purple;
     background-color: $receipt-background-comp;
@@ -128,7 +128,7 @@
         }
 
         &__details {
-            width: 120px;
+            width: 100px;
             border: 2px solid red;
         }
     }
