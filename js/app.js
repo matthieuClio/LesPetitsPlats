@@ -9,7 +9,7 @@ class App {
         this.dataFactory = new DataFactory()
 
         // Main search
-        this.search = new PrimarySearch()
+        this.primarySearch = new PrimarySearch()
     }
 
     displayData() {
@@ -18,7 +18,7 @@ class App {
 
     mainSearch() {
         // console.log(this.search.searchInputText)
-        this.search.handleChange()
+        this.primarySearch.handleChange()
     }
 }
 
