@@ -2,6 +2,13 @@ class PrimarySearch {
     constructor() {
         // Dom elements
         this.searchInputText = document.getElementById('search-input-text')
+
+        // Data factory
+        this.dataFactory = new DataFactory()
+    }
+
+    default(data) {
+        this.dataFactory.display(data)
     }
 
     handleChange() {

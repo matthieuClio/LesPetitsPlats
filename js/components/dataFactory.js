@@ -13,11 +13,14 @@ class DataFactory {
         this.descriptionReceipt = document.createElement('p')
         this.h4SecondaryReceipt = document.createElement('h4')
         this.ingredientsReceipt = document.createElement('div')
-        this.infoDetailsReceipt = document.createElement('span')
-        this.infoDetailsH4Receipt = document.createElement('h4')
     }
 
     display(data) {
+        console.log(data[0])
+        console.log(data[0].image)
+        console.log(data[0].name)
+        console.log(data[0].ingredients[0].ingredient)
+
         this.colReceipt.setAttribute('class', 'col-3 no-padding')
         this.containerReceipt.setAttribute('class', 'receipt-comp rounded-3 position-relative')
         this.figureReceipt.setAttribute('class', 'receipt-comp__figure')
@@ -29,18 +32,28 @@ class DataFactory {
         this.descriptionReceipt.setAttribute('class', 'font-size-13')
         this.h4SecondaryReceipt.setAttribute('class', 'receipt-comp__info__h4 fw-bold mt-4 mb-2')
         this.ingredientsReceipt.setAttribute('class', 'd-flex flex-wrap')
-        this.infoDetailsReceipt.setAttribute('class', 'receipt-comp__info__details font-size-13 d-flex flex-column fw-bold mb-3')
-        this.infoDetailsH4Receipt.setAttribute('class', 'receipt-comp__info__h4')
 
-        this.imgReceipt.src = './public/assets/photos/Recette01.jpg'
-        this.timeReceipt.textContent = '10min'
-        this.h3Receipt.textContent = 'LIMONADE DE COCO'
+        this.imgReceipt.src = `./public/assets/photos/${data[0].image}`
+        this.timeReceipt.textContent = `${data[0].time} min`
+        this.h3Receipt.textContent = data[0].name
         this.h4Receipt.textContent = 'RECETTE'
-        this.descriptionReceipt.textContent = `Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
-        Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis`
+        this.descriptionReceipt.textContent = data[0].description
         this.h4SecondaryReceipt.textContent = 'INGRÉDIENTS'
-        this.infoDetailsReceipt.textContent = 'Lait de coco'
-        this.infoDetailsH4Receipt.textContent = 'Values'
+
+        // Ingredients details, name and quantity 
+        data[0].ingredients.forEach(element => {
+            this.infoDetailsReceipt = document.createElement('span')
+            this.infoDetailsH4Receipt = document.createElement('h4')
+
+            this.infoDetailsReceipt.setAttribute('class', 'receipt-comp__info__details font-size-13 d-flex flex-column fw-bold mb-3') 
+            this.infoDetailsH4Receipt.setAttribute('class', 'receipt-comp__info__h4')
+
+            this.infoDetailsReceipt.textContent = element.ingredient
+            this.infoDetailsH4Receipt.textContent = element.quantity
+
+            this.ingredientsReceipt.appendChild(this.infoDetailsReceipt)
+            this.infoDetailsReceipt.appendChild(this.infoDetailsH4Receipt)
+        });
 
         this.rowReceipt.appendChild(this.colReceipt)
         this.colReceipt.appendChild(this.containerReceipt)
@@ -53,9 +66,5 @@ class DataFactory {
         this.infoReceipt.appendChild(this.descriptionReceipt)
         this.infoReceipt.appendChild(this.h4SecondaryReceipt)
         this.infoReceipt.appendChild(this.ingredientsReceipt)
-        this.ingredientsReceipt.appendChild(this.infoDetailsReceipt)
-        this.infoDetailsReceipt.appendChild(this.infoDetailsH4Receipt)
-
-        // console.log(data)
     }
 }
