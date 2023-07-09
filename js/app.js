@@ -1,16 +1,18 @@
 "use strict";
 
 class App {
-    constructor() {
+    constructor () {
         // Data
         this.data = recipes // ./js/data/recipes/js - const recipes
+        
         // Component PrimarySearch
-        this.primarySearch = new PrimarySearch()
+        this.primarySearch = new PrimarySearch(this.data)
     }
 
-    mainSearch() {
-        this.primarySearch.default(this.data)
+    mainSearch () {
+        this.primarySearch.default() // Display all receipts
         this.primarySearch.handleChange()
+        this.primarySearch.tagChange()
     }
 }
 

@@ -1,5 +1,5 @@
 class DataFactory {
-    constructor() {
+    constructor () {
         // Dom elements
         this.rowReceipt
         this.colReceipt
@@ -17,7 +17,7 @@ class DataFactory {
         this.infoDetailsH4Receipt
     }
 
-    display(data) {
+    display (data) {
         console.log(data)
         console.log(data[0])
         console.log(data[0].ingredients[0].ingredient)
