@@ -67,7 +67,7 @@ class PrimarySearch {
 
                         // If the ingredients matches we push the result if isn't already pushed
                         if (nameResult === null && descriptionResult === null && ingredientsResult !== null) {
-                            // console.log(checkDataIngredients)
+                            console.log(checkDataIngredients)
                             this.matchData.push(dataElement)
                         }
                     })
