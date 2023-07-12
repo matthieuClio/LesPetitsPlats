@@ -67,47 +67,46 @@
                 <div class="row justify-content-between">
                     <div class="col d-flex no-padding">
                         <!-- Component search secondary -->
-                        <ul class="search-secondary-comp rounded-3 ps-3 pe-3 overflow-hidden">
+                        <ul class="search-secondary-default-comp search-secondary-comp rounded-3 ps-3 pe-3 overflow-hidden" id="search-ingredients">
                             <li class="search-secondary-comp__li-title-comp d-flex position-relative align-items-center">
                                 Ingrédients
 
                                 <!-- Icon -->
-                                <span class="search-secondary-comp__icon-chevron-comp bi bi-chevron-compact-down position-absolute" id="icon-chevron-down">
+                                <span class="search-secondary-comp__icon-chevron-comp bi bi-chevron-compact-down position-absolute" id="icon-chevron-down-ingredients">
                                 </span>
-                                <!-- <span class="bi bi-chevron-compact-up"></span> -->
+                                <span class="search-secondary-comp__icon-chevron-comp bi bi-chevron-compact-up position-absolute d-none" id="icon-chevron-up-ingredients">
+                                </span>
                             </li>
                             <li class="mb-3 d-flex position-relative">
                                 <input type="search" class="search-secondary-comp__input-comp pt-3 pb-3 ps-2 pe-5">
                                 <i class="search-secondary-comp__icon-search-comp bi bi-search position-absolute"></i>
                                 <i class="search-secondary-comp__icon-close-comp bi bi-x position-absolute"></i>
                             </li>
-                            <li class="search-secondary-comp__items-comp mb-1">
-                                Nom ingrédient
-                            </li>
-                            <li class="search-secondary-comp__items-comp mb-1">
-                                Nom ingrédient
-                            </li>
-                            <li class="search-secondary-comp__items-comp mb-1">
-                                Nom ingrédient
-                            </li>
-                            <li class="search-secondary-comp__items-comp mb-1">
-                                Nom ingrédient
-                            </li>
+                            <!-- Li generate by JS in dataFactoryTags.js -->
                         </ul>
 
                         <!-- Component search secondary -->
-                        <ul class="search-secondary-comp rounded-3 ps-3 pe-3 ms-5 overflow-hidden">
+                        <ul class="search-secondary-default-comp search-secondary-comp rounded-3 ps-3 pe-3 ms-5 overflow-hidden" id="search-appliances">
                             <li class="search-secondary-comp__li-title-comp d-flex position-relative align-items-center">
                                 Appareils
 
                                 <!-- Icon -->
-                                <span class="search-secondary-comp__icon-chevron-comp bi bi-chevron-compact-down position-absolute"></span>
-                                <!-- <span class="bi bi-chevron-compact-up"></span> -->
+                                <span class="search-secondary-comp__icon-chevron-comp bi bi-chevron-compact-down position-absolute" id="icon-chevron-down-appliances"></span>
+                                <span class="search-secondary-comp__icon-chevron-comp bi bi-chevron-compact-up position-absolute d-none" id="icon-chevron-up-appliances"></span>
                             </li>
                             <li class="mb-3 d-flex position-relative">
                                 <input type="search" class="search-secondary-comp__input-comp pt-3 pb-3 ps-2 pe-5">
                                 <i class="search-secondary-comp__icon-search-comp bi bi-search position-absolute"></i>
                                 <i class="search-secondary-comp__icon-close-comp bi bi-x position-absolute"></i>
+                            </li>
+                            <li class="search-secondary-comp__items-comp mb-1">
+                                Nom ingrédient
+                            </li>
+                            <li class="search-secondary-comp__items-comp mb-1">
+                                Nom ingrédient
+                            </li>
+                            <li class="search-secondary-comp__items-comp mb-1">
+                                Nom ingrédient
                             </li>
                             <li class="search-secondary-comp__items-comp mb-1">
                                 Nom ingrédient
@@ -124,18 +123,27 @@
                         </ul>
 
                         <!-- Component search secondary -->
-                        <ul class="search-secondary-comp rounded-3 ps-3 pe-3 ms-5 overflow-hidden">
+                        <ul class="search-secondary-default-comp search-secondary-comp rounded-3 ps-3 pe-3 ms-5 overflow-hidden" id="search-utensils">
                             <li class="search-secondary-comp__li-title-comp d-flex position-relative align-items-center">
                                 Ustensiles
 
                                 <!-- Icon -->
-                                <span class="search-secondary-comp__icon-chevron-comp bi bi-chevron-compact-down position-absolute"></span>
-                                <!-- <span class="bi bi-chevron-compact-up"></span> -->
+                                <span class="search-secondary-comp__icon-chevron-comp bi bi-chevron-compact-down position-absolute" id="icon-chevron-down-utensils"></span>
+                                <span class="search-secondary-comp__icon-chevron-comp bi bi-chevron-compact-up position-absolute d-none" id="icon-chevron-up-utensils"></span>
                             </li>
                             <li class="mb-3 d-flex position-relative">
                                 <input type="search" class="search-secondary-comp__input-comp pt-3 pb-3 ps-2 pe-5">
                                 <i class="search-secondary-comp__icon-search-comp bi bi-search position-absolute"></i>
                                 <i class="search-secondary-comp__icon-close-comp bi bi-x position-absolute"></i>
+                            </li>
+                            <li class="search-secondary-comp__items-comp mb-1">
+                                Nom ingrédient
+                            </li>
+                            <li class="search-secondary-comp__items-comp mb-1">
+                                Nom ingrédient
+                            </li>
+                            <li class="search-secondary-comp__items-comp mb-1">
+                                Nom ingrédient
                             </li>
                             <li class="search-secondary-comp__items-comp mb-1">
                                 Nom ingrédient
@@ -153,7 +161,7 @@
                     </div>
                     
                     <!-- Info receipts -->
-                    <span class="info-search-secondary d-flex align-items-center no-padding">
+                    <span class="info-search-secondary no-padding p-2">
                         <span class="nb-receipts me-1">
                             1500
                         </span>
@@ -187,7 +195,9 @@
         
         <!-- Custom JS -->
         <script src="./js/data/recipes.js"></script>
-        <script src="./js/components/dataFactory.js"></script>
+        <script src="./js/components/dataFactoryReceipt.js"></script>
+        <script src="./js/components/dataFactoryTags.js"></script>
+        <script src="./js/components/tags.js"></script>
         <script src="./js/components/primarySearch.js"></script>
         <script src="./js/app.js"></script>
     </body>

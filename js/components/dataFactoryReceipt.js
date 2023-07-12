@@ -1,4 +1,4 @@
-class DataFactory {
+class DataFactoryReceipt {
     constructor () {
         // Dom elements
         this.rowReceipt

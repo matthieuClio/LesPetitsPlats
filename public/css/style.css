@@ -11986,7 +11986,7 @@ header {
 }
 
 .search-secondary-comp {
-  height: 50px;
+  height: 200px;
   width: 200px;
   background-color: #FFFFFF;
 }
@@ -12020,6 +12020,10 @@ header {
 }
 .search-secondary-comp__items-comp {
   font-size: 14px;
+}
+
+.search-secondary-default-comp {
+  height: 50px;
 }
 
 .tag-comp {

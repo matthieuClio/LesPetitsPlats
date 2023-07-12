@@ -9,8 +9,12 @@ class PrimarySearch {
         this.searchInputText = document.getElementById('search-input-text')
         this.chevronDown = document.getElementById('icon-chevron-down')
 
+        // Components
+        // ..........
         // Data factory
-        this.dataFactory = new DataFactory()
+        this.dataFactory = new DataFactoryReceipt()
+        // Tag
+        this.tags = new Tags()
     }
 
     run (data) {
@@ -86,13 +90,12 @@ class PrimarySearch {
         }) //End event keyup
     }
 
-    tagChange() {
-        this.chevronDown.addEventListener('click', () => {
-            console.log(this.searchInputText.value)
-        })
+    reinitialized () {
+        this.rowReceipt.innerHTML = ""
     }
 
-    reinitialized() {
-        this.rowReceipt.innerHTML = ""
+    tagChange () {
+        this.tags.run(this.data)
+        this.tags.roll()
     }
 }

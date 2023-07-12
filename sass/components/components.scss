@@ -50,8 +50,7 @@
 }
 
 .search-secondary-comp {
-    height: 50px;
-    // height: 200px;
+    height: 200px;
     width: 200px;
     background-color: $search-secondary-background-comp;
 
@@ -91,6 +90,11 @@
     &__items-comp {
         font-size: 14px;
     }
+}
+
+// class who will be remove by JS
+.search-secondary-default-comp {
+    height: 50px;
 }
 
 .tag-comp {
