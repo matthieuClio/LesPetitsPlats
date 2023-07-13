@@ -26,6 +26,7 @@ class Tags {
         this.isRollUtensils = false
 
         this.dataSearch
+        this.matchDataSearch
     }
 
     run (data) {
@@ -33,24 +34,44 @@ class Tags {
     }
 
     autoUpdate (matchData) {
+        console.log(matchData)
         // Reset the result for the new search
         this.searchIngredientsContainer.textContent = ''
-        
+
         // Display the new search
         this.dataFactoryTags.displayIngredients(matchData)
     }
 
-    search () {    
+    searchEvent () {
         this.searchIngredientsInput.addEventListener('keyup', () => {
-            this.dataSearch = this.dataFactoryTags.ingredientsTags
-            
-            console.log(this.dataSearch)
-            // Reset the result for the new search
-            // this.searchIngredientsContainer.textContent = ''
-            
-            // const rule = this.searchIngredientsInput.value
-            // const regEx = RegExp(rule, 'gm')
+            this.searchTagsInput()
         })
+    }
+
+    searchTagsInput() {
+        this.matchDataSearch = []
+
+        this.dataSearch = this.dataFactoryTags.ingredientsTags
+        
+        // Reset the result for the new search
+        this.searchIngredientsContainer.textContent = ''
+
+        this.dataSearch.forEach((element) => {
+            const rule = this.searchIngredientsInput.value.toLowerCase()
+            const regEx = RegExp(rule, 'gm')
+
+            const checkDataSearch = element.toLowerCase()
+            const ingredientResult = checkDataSearch.match(regEx)
+
+            if (ingredientResult != null) {
+                this.matchDataSearch = this.matchDataSearch.filter(ingredient => ingredient.toLowerCase() != checkDataSearch)
+                
+                this.matchDataSearch.push(element)
+            }
+        })
+
+        this.dataFactoryTags.createIngredient(this.matchDataSearch)
+        // console.log(this.matchDataSearch)
     }
 
     roll () {

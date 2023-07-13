@@ -51,12 +51,12 @@ class PrimarySearch {
 
                     // If the name matches we push the result
                     if (nameResult !== null) {
-                        console.log(checkDataName)
+                        // console.log(checkDataName)
                         this.matchData.push(element)
 
                     // If the description matches we push the result
                     } else if (descriptionResult !== null) {
-                        console.log(checkDataDescription)
+                        // console.log(checkDataDescription)
                         this.matchData.push(element)
                     } else {
 
@@ -64,7 +64,6 @@ class PrimarySearch {
                         const dataElement = element
 
                         element.ingredients.forEach((element, index, array) => {
-
                             // Regex for ingredients
                             const checkDataIngredients = element.ingredient.toLowerCase()
                             const ingredientsResult = checkDataIngredients.match(regex)
@@ -74,16 +73,20 @@ class PrimarySearch {
                                 console.log(checkDataIngredients)
                                 this.matchData.push(dataElement)
                                 
-                                array.length = index + 1 // We stop the loop
+                                // array.length = index + 1 // We stop the loop <- Issue with this line
                             }
                         })
                     }
                 })
+
                 // Display the new search
                 this.run(this.matchData)
 
-                // Update the Tags
+                // Update tags
                 this.tags.autoUpdate(this.matchData)
+
+                // Update tags with input specific value already writed
+                this.tags.searchTagsInput()
 
                 // Reset the result for the new search
                 this.matchData = []
@@ -92,8 +95,11 @@ class PrimarySearch {
             } else if (this.searchInputText.value === '') {
                 this.run(this.data)
 
-                // Update the Tags
+                // Update tags
                 this.tags.autoUpdate(this.data)
+
+                // Update tags with input specific value already writed
+                this.tags.searchTagsInput()
             }
 
         }) //End event keyup
@@ -105,7 +111,7 @@ class PrimarySearch {
 
     tag () {
         this.tags.run(this.data)
-        this.tags.search()
+        this.tags.searchEvent()
         this.tags.roll()
     }
 }

@@ -14,20 +14,25 @@ class DataFactoryTags {
         data.forEach((element) => {
 
             element.ingredients.forEach((element) => {
-                
-                this.ingredientsTags = this.ingredientsTags.filter(ingredient => ingredient != element.ingredient);
+
+                // Pass the items in lower case and after filter them
+                this.ingredientsTags = this.ingredientsTags.filter(ingredient => ingredient.toLowerCase() != element.ingredient.toLowerCase())
                 this.ingredientsTags.push(element.ingredient)
             })
         })
 
-        console.log(this.ingredientsTags)
+        // console.log(this.ingredientsTags)
+        this.createIngredient(this.ingredientsTags)
+    }
 
-        this.ingredientsTags.forEach((element) => {
+    createIngredient(specificData) {
+        specificData.forEach((element) => {
             this.liIngredients = document.createElement('li')
 
             this.liIngredients.setAttribute('class', 'search-secondary-comp__items-comp mb-1')
             this.liIngredients.textContent = element
             this.searchIngredientsContainer.appendChild(this.liIngredients)
         })
+
     }
 }
