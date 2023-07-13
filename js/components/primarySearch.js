@@ -58,26 +58,32 @@ class PrimarySearch {
                     } else if (descriptionResult !== null) {
                         console.log(checkDataDescription)
                         this.matchData.push(element)
+                    } else {
+
+                        // Stock data specific element
+                        const dataElement = element
+
+                        element.ingredients.forEach((element, index, array) => {
+
+                            // Regex for ingredients
+                            const checkDataIngredients = element.ingredient.toLowerCase()
+                            const ingredientsResult = checkDataIngredients.match(regex)
+
+                            // If the ingredients matches we push the result if isn't already pushed
+                            if (ingredientsResult !== null) {
+                                console.log(checkDataIngredients)
+                                this.matchData.push(dataElement)
+                                
+                                array.length = index + 1 // We stop the loop
+                            }
+                        })
                     }
-
-                    // Stock data specific element
-                    const dataElement = element
-
-                    element.ingredients.forEach((element) => {
-
-                        // Regex for ingredients
-                        const checkDataIngredients = element.ingredient.toLowerCase()
-                        const ingredientsResult = checkDataIngredients.match(regex)
-
-                        // If the ingredients matches we push the result if isn't already pushed
-                        if (nameResult === null && descriptionResult === null && ingredientsResult !== null) {
-                            console.log(checkDataIngredients)
-                            this.matchData.push(dataElement)
-                        }
-                    })
                 })
                 // Display the new search
                 this.run(this.matchData)
+
+                // Update the Tags
+                this.tags.autoUpdate(this.matchData)
 
                 // Reset the result for the new search
                 this.matchData = []
@@ -85,6 +91,9 @@ class PrimarySearch {
             // make a default search if input is empty
             } else if (this.searchInputText.value === '') {
                 this.run(this.data)
+
+                // Update the Tags
+                this.tags.autoUpdate(this.data)
             }
 
         }) //End event keyup
@@ -94,8 +103,9 @@ class PrimarySearch {
         this.rowReceipt.innerHTML = ""
     }
 
-    tagChange () {
+    tag () {
         this.tags.run(this.data)
+        this.tags.search()
         this.tags.roll()
     }
 }

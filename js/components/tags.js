@@ -12,18 +12,45 @@ class Tags {
         this.searchCompAppliances = document.getElementById('search-appliances')
         this.searchCompUtensils = document.getElementById('search-utensils')
 
+        this.searchIngredientsInput = document.getElementById('search-ingredients-input')
+
+        this.searchIngredientsContainer = document.getElementById('search-ingredients-container')
+
+        // Components
+        // ..........
+        this.dataFactoryTags = new DataFactoryTags()
+
         // Other
         this.isRollIngredients = false
         this.isRollAppliances = false
         this.isRollUtensils = false
 
-        // Components
-        // ..........
-        this.dataFactoryTags = new DataFactoryTags()
+        this.dataSearch
     }
 
     run (data) {
         this.dataFactoryTags.displayIngredients(data)
+    }
+
+    autoUpdate (matchData) {
+        // Reset the result for the new search
+        this.searchIngredientsContainer.textContent = ''
+        
+        // Display the new search
+        this.dataFactoryTags.displayIngredients(matchData)
+    }
+
+    search () {    
+        this.searchIngredientsInput.addEventListener('keyup', () => {
+            this.dataSearch = this.dataFactoryTags.ingredientsTags
+            
+            console.log(this.dataSearch)
+            // Reset the result for the new search
+            // this.searchIngredientsContainer.textContent = ''
+            
+            // const rule = this.searchIngredientsInput.value
+            // const regEx = RegExp(rule, 'gm')
+        })
     }
 
     roll () {

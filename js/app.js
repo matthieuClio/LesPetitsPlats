@@ -11,7 +11,7 @@ class App {
 
     mainSearch () {
         this.primarySearch.handleChange()
-        this.primarySearch.tagChange()
+        this.primarySearch.tag()
     }
 }
 

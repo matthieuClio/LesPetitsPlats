@@ -19,7 +19,6 @@ class DataFactoryReceipt {
 
     display (data) {
         console.log(data)
-        console.log(data[0])
 
         data.forEach(element => {
             this.rowReceipt = document.getElementById('row-receipts')
