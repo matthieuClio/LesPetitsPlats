@@ -12,13 +12,13 @@ class PrimarySearch {
         // Components
         // ..........
         // Data factory
-        this.dataFactory = new DataFactoryReceipt()
+        this.dataFactoryReceipt = new DataFactoryReceipt()
         // Tag
         this.tags = new Tags()
     }
 
     run (data) {
-        this.dataFactory.display(data)
+        this.dataFactoryReceipt.display(data)
     }
 
     handleChange () {

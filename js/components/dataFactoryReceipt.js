@@ -53,7 +53,7 @@ class DataFactoryReceipt {
             this.descriptionReceipt.textContent = element.description
             this.h4SecondaryReceipt.textContent = 'INGRÉDIENTS'
 
-            // Ingredients details, name and quantity
+            // Ingredients names and quantity
             element.ingredients.forEach(element => {
                 this.infoDetailsReceipt = document.createElement('span')
                 this.infoDetailsH4Receipt = document.createElement('h4')
