@@ -1,13 +1,24 @@
 class DataFactoryTags {
-    constructor() {
+    constructor () {
         // Dom elements
         this.searchIngredientsContainer = document.getElementById('search-ingredients-container')
         this.tagContainer = document.getElementById('tags-container')
         this.liIngredients
         this.tags
         this.iconColse
+        this.searchInputText = document.getElementById('search-input-text')
+        this.rowReceipt = document.getElementById('row-receipts')
+
+        // Components
+        // ..........
+        this.dataFactoryReceipt = new DataFactoryReceipt()
+        
+        // Other
         this.ingredientsTags = []
         this.tagsSelected = []
+        this.checkMatchData = []
+        this.checkMatchIngredient = []
+        this.matchData
     }
 
     displayIngredients (data) {
@@ -25,11 +36,17 @@ class DataFactoryTags {
             })
         })
 
+        // Update matchData
+        this.matchData = data
+
         // console.log(this.ingredientsTags)
         this.createIngredient(this.ingredientsTags)
     }
 
-    createIngredient(specificData) {
+    createIngredient (specificData) {
+        // Delete the old Ingredients list
+        this.searchIngredientsContainer.textContent = ''
+
         specificData.forEach((element) => {
             this.liIngredients = document.createElement('li')
             this.liIngredients.setAttribute('class', 'search-secondary-comp__items-comp mb-1')
@@ -58,12 +75,12 @@ class DataFactoryTags {
                         oldSpecificData = oldSpecificData.filter(arrayElement => arrayElement !== element)
                     })
 
-                    // Delete the old Ingredients list
-                    this.searchIngredientsContainer.textContent = ''
-
                     // Update the Ingredients list
                     this.createIngredient(oldSpecificData)
                     console.log(oldSpecificData)
+
+                    // Update the main search (receipt)
+                    this.refreshReceipt()
                 })
 
                 this.tagContainer.appendChild(this.tags)
@@ -71,23 +88,57 @@ class DataFactoryTags {
 
                 // Array will contain all tags selected
                 this.tagsSelected.push(element)
-                console.log(this.tagsSelected)
+                // console.log(this.tagsSelected)
 
                 // Filter the Ingredients list with the selected tags
                 this.tagsSelected.forEach((element) => {
                     specificData = specificData.filter(arrayElement => arrayElement !== element)
                 })
 
-                // Delete the old Ingredients list
-                this.searchIngredientsContainer.textContent = ''
-
                 // Update the Ingredients list
                 this.createIngredient(specificData)
-                console.log(specificData)
-            })
+                // console.log(specificData)
 
+                // Update the main search (receipt)
+                this.refreshReceipt()
+            })
             this.searchIngredientsContainer.appendChild(this.liIngredients)
         })
 
+    }
+
+    refreshReceipt () {
+        // Reinitialize match data check
+        this.checkMatchData = []
+        this.checkMatchIngredient = []
+
+        // Define new data in comparison tags called checkMatchData
+        this.matchData.forEach((element) => {
+
+            let matchDataSpecificLine = element
+            let tagsSelectedtoCheck = this.tagsSelected
+
+            element.ingredients.forEach((element) => {
+                tagsSelectedtoCheck = tagsSelectedtoCheck.filter(tag => tag.toLowerCase() !== element.ingredient.toLowerCase())
+            })
+
+            if (tagsSelectedtoCheck.length === 0) {
+                // We add to a new array the specific data
+                this.checkMatchData.push(matchDataSpecificLine)
+                console.log(matchDataSpecificLine)
+            }
+        })
+
+        // Define specifc ingredients
+        this.checkMatchData.forEach((element) => {
+
+            element.ingredients.forEach((element) => {
+                this.checkMatchIngredient.push(element.ingredient)
+            })
+        })
+
+        this.dataFactoryReceipt.display(this.checkMatchData)
+        this.createIngredient(this.checkMatchIngredient)
+        console.log(this.checkMatchData)
     }
 }

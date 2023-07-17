@@ -14,8 +14,6 @@ class Tags {
 
         this.searchIngredientsInput = document.getElementById('search-ingredients-input')
 
-        this.searchIngredientsContainer = document.getElementById('search-ingredients-container')
-
         // Components
         // ..........
         this.dataFactoryTags = new DataFactoryTags()
@@ -34,9 +32,6 @@ class Tags {
     }
 
     autoUpdate (matchData) {
-        console.log(matchData)
-        // Reset the result for the new search
-        this.searchIngredientsContainer.textContent = ''
 
         // Display the new search
         this.dataFactoryTags.displayIngredients(matchData)
@@ -52,9 +47,6 @@ class Tags {
         this.matchDataSearch = []
 
         this.dataSearch = this.dataFactoryTags.ingredientsTags
-        
-        // Reset the result for the new search
-        this.searchIngredientsContainer.textContent = ''
 
         this.dataSearch.forEach((element) => {
             const rule = this.searchIngredientsInput.value.toLowerCase()

@@ -1,6 +1,7 @@
 class DataFactoryReceipt {
     constructor () {
         // Dom elements
+        this.rowReceipt = document.getElementById('row-receipts')
         this.rowReceipt
         this.colReceipt
         this.containerReceipt
@@ -19,6 +20,7 @@ class DataFactoryReceipt {
 
     display (data) {
         // console.log(data)
+        this.rowReceipt.innerHTML = ""
 
         data.forEach(element => {
             this.rowReceipt = document.getElementById('row-receipts')

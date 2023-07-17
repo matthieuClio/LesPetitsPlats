@@ -13,7 +13,6 @@ class PrimarySearch {
         // ..........
         // Data factory
         this.dataFactoryReceipt = new DataFactoryReceipt()
-        // Tag
         this.tags = new Tags()
     }
 
@@ -30,12 +29,9 @@ class PrimarySearch {
         }) //End event keyup
     }
 
-    search() {
+    search () {
         // Start the search after 3 characters
         if (this.searchInputText.value.length > 2) {
-
-            // Erase the previous search
-            this.reinitialized()
 
             // Check the correspondence of the name, ingredients and description compared to the data
             this.data.forEach((element) => {
@@ -74,7 +70,7 @@ class PrimarySearch {
 
                         // If the ingredients matches we push the result if isn't already pushed
                         if (ingredientsResult !== null) {
-                            console.log(checkDataIngredients)
+                            // console.log(checkDataIngredients)
                             this.matchData.push(dataElement)
                             
                             // array.length = index + 1 // We stop the loop <- Issue with this line
@@ -97,8 +93,6 @@ class PrimarySearch {
 
         // make a default search if input is empty
         } else if (this.searchInputText.value === '') {
-            // Erase the previous search
-            this.reinitialized()
 
             // Make a search with the default data
             this.run(this.data)
@@ -109,10 +103,6 @@ class PrimarySearch {
             // Update tags list (li) specific value already writed
             this.tags.searchTagsInput()
         }
-    }
-
-    reinitialized () {
-        this.rowReceipt.innerHTML = ""
     }
 
     tag () {
