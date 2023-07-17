@@ -70,6 +70,11 @@ class Tags {
             }
         })
 
+        // Filter the Ingredients list with the selected tags
+        this.dataFactoryTags.tagsSelected.forEach((element) => {
+            this.matchDataSearch = this.matchDataSearch.filter(arrayElement => arrayElement !== element)
+        })
+        
         this.dataFactoryTags.createIngredient(this.matchDataSearch)
         // console.log(this.matchDataSearch)
     }
@@ -86,7 +91,6 @@ class Tags {
                 this.chevronDownIngredients.classList.add('d-none')
                 this.chevronUpIngredients.classList.remove('d-none')
                 this.isRollIngredients = true
-
             }
         })
         this.chevronUpIngredients.addEventListener('click', () => {

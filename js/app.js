@@ -10,6 +10,7 @@ class App {
     }
 
     mainSearch () {
+        this.primarySearch.run(this.data)
         this.primarySearch.handleChange()
         this.primarySearch.tag()
     }
