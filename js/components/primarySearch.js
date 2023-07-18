@@ -12,21 +12,19 @@ class PrimarySearch {
         // Components
         // ..........
         // Data factory
-        this.dataFactoryReceipt = new DataFactoryReceipt()
+        // this.dataFactoryReceipt = new DataFactoryReceipt() // - TO DELETE
         this.tags = new Tags()
-    }
+    }  
 
     run (data) {
-        this.dataFactoryReceipt.display(data)
+        // this.dataFactoryReceipt.display(data) // - TO DELETE
+        this.tags.callMethodOtherObject(data)
     }
 
     handleChange () {
-        // Display all receipts - TO DELETE
-        // this.run(this.data)
-
         this.searchInputText.addEventListener('keyup', () => {
             this.search()
-        }) //End event keyup
+        })
     }
 
     search () {
@@ -49,12 +47,12 @@ class PrimarySearch {
                 const descriptionResult = checkDataDescription.match(regex)
                 // console.log(descriptionResult)
 
-                // If the name matches we push the result
+                // If the name match we push the result
                 if (nameResult !== null) {
                     // console.log(checkDataName)
                     this.matchData.push(element)
 
-                // If the description matches we push the result
+                // If the description match we push the result
                 } else if (descriptionResult !== null) {
                     // console.log(checkDataDescription)
                     this.matchData.push(element)
@@ -68,7 +66,7 @@ class PrimarySearch {
                         const checkDataIngredients = element.ingredient.toLowerCase()
                         const ingredientsResult = checkDataIngredients.match(regex)
 
-                        // If the ingredients matches we push the result if isn't already pushed
+                        // If the ingredients match we push the result if isn't already pushed
                         if (ingredientsResult !== null) {
                             // console.log(checkDataIngredients)
                             this.matchData.push(dataElement)
@@ -83,10 +81,10 @@ class PrimarySearch {
             this.run(this.matchData)
 
             // Update tags
-            this.tags.autoUpdate(this.matchData)
+            // this.tags.autoUpdate(this.matchData)
 
             // Update tags list (li) specific value already writed
-            this.tags.searchTagsInput()
+            // this.tags.searchTagsInput()
 
             // Reset the result for the new search
             this.matchData = []
@@ -98,10 +96,10 @@ class PrimarySearch {
             this.run(this.data)
 
             // Update tags
-            this.tags.autoUpdate(this.data)
+            // this.tags.autoUpdate(this.data)
 
             // Update tags list (li) specific value already writed
-            this.tags.searchTagsInput()
+            // this.tags.searchTagsInput()
         }
     }
 

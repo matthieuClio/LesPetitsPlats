@@ -21,6 +21,10 @@ class DataFactoryTags {
         this.matchData
     }
 
+    updateData (data) {
+        this.matchData = data
+    }
+
     displayIngredients (data) {
         // Reset the result for the new search
         this.ingredientsTags = []
@@ -30,7 +34,7 @@ class DataFactoryTags {
 
             element.ingredients.forEach((element) => {
 
-                // Pass the items in lower case and after filter them
+                // Pass the items in lower case and filter duplicates
                 this.ingredientsTags = this.ingredientsTags.filter(ingredient => ingredient.toLowerCase() != element.ingredient.toLowerCase())
                 this.ingredientsTags.push(element.ingredient)
             })
@@ -63,21 +67,22 @@ class DataFactoryTags {
 
                 // Define a specifig tag
                 let specificTags = this.tags
-                let oldSpecificData = specificData
+                // let oldSpecificData = specificData
 
                 // Event : Delete tags
                 this.iconColse.addEventListener('click', () => {
                     specificTags.remove()
                     this.tagsSelected = this.tagsSelected.filter(arrayElement => arrayElement !== element)
 
+                    // MOVE THIS IN REFRESHRECEIPT-----------
                     // Filter the Ingredients list with the selected tags
-                    this.tagsSelected.forEach((element) => {
-                        oldSpecificData = oldSpecificData.filter(arrayElement => arrayElement !== element)
-                    })
+                    // this.tagsSelected.forEach((element) => {
+                    //     oldSpecificData = oldSpecificData.filter(arrayElement => arrayElement !== element)
+                    // })
 
                     // Update the Ingredients list
-                    this.createIngredient(oldSpecificData)
-                    console.log(oldSpecificData)
+                    // this.createIngredient(oldSpecificData)
+                    // console.log(oldSpecificData)
 
                     // Update the main search (receipt)
                     this.refreshReceipt()
@@ -90,21 +95,21 @@ class DataFactoryTags {
                 this.tagsSelected.push(element)
                 // console.log(this.tagsSelected)
 
+                // MOVE THIS IN REFRESHRECEIPT-----------
                 // Filter the Ingredients list with the selected tags
-                this.tagsSelected.forEach((element) => {
-                    specificData = specificData.filter(arrayElement => arrayElement !== element)
-                })
+                // this.tagsSelected.forEach((element) => {
+                //     specificData = specificData.filter(arrayElement => arrayElement !== element)
+                // })
 
                 // Update the Ingredients list
-                this.createIngredient(specificData)
+                // this.createIngredient(specificData)
                 // console.log(specificData)
 
-                // Update the main search (receipt)
+                // Update the main search (receipt) and ingredients list
                 this.refreshReceipt()
             })
             this.searchIngredientsContainer.appendChild(this.liIngredients)
-        })
-
+        }) // End loop specificData
     }
 
     refreshReceipt () {
@@ -112,22 +117,24 @@ class DataFactoryTags {
         this.checkMatchData = []
         this.checkMatchIngredient = []
 
-        // Define new data in comparison tags called checkMatchData
+        // Define new data array in tags comparison called checkMatchData
         this.matchData.forEach((element) => {
 
             let matchDataSpecificLine = element
             let tagsSelectedtoCheck = this.tagsSelected
 
+            // Verify if all tags match with element's ingredients
             element.ingredients.forEach((element) => {
                 tagsSelectedtoCheck = tagsSelectedtoCheck.filter(tag => tag.toLowerCase() !== element.ingredient.toLowerCase())
             })
 
+            // All tags match
             if (tagsSelectedtoCheck.length === 0) {
                 // We add to a new array the specific data
                 this.checkMatchData.push(matchDataSpecificLine)
-                console.log(matchDataSpecificLine)
             }
         })
+        console.log(this.checkMatchData)
 
         // Define specifc ingredients
         this.checkMatchData.forEach((element) => {
@@ -137,8 +144,18 @@ class DataFactoryTags {
             })
         })
 
+        // Filter the Ingredients list with the selected tags
+        this.tagsSelected.forEach((element) => {
+            this.checkMatchIngredient = this.checkMatchIngredient.filter(arrayElement => arrayElement !== element)
+        })
+
+        // Define the new ingredients list
+        this.ingredientsTags = this.checkMatchIngredient
+
+        // Refresh receipt
         this.dataFactoryReceipt.display(this.checkMatchData)
+
+        // Refresh ingredient
         this.createIngredient(this.checkMatchIngredient)
-        console.log(this.checkMatchData)
     }
 }

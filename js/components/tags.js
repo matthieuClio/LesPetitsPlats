@@ -27,6 +27,13 @@ class Tags {
         this.matchDataSearch
     }
 
+    callMethodOtherObject (data) {
+        // Update the data
+        this.dataFactoryTags.updateData(data)
+        // Refresh the receipt with the new data
+        this.dataFactoryTags.refreshReceipt()
+    }
+
     run (data) {
         this.dataFactoryTags.displayIngredients(data)
     }
@@ -43,11 +50,14 @@ class Tags {
         })
     }
 
-    searchTagsInput() {
+    searchTagsInput () {
+        // Reinitialize the matchDataSearch
         this.matchDataSearch = []
 
+        // Get the define tags list
         this.dataSearch = this.dataFactoryTags.ingredientsTags
 
+        console.log(this.dataSearch)
         this.dataSearch.forEach((element) => {
             const rule = this.searchIngredientsInput.value.toLowerCase()
             const regEx = RegExp(rule, 'gm')
@@ -62,7 +72,7 @@ class Tags {
             }
         })
 
-        // Filter the Ingredients list with the selected tags
+        // Filter Ingredients list with the selected tags
         this.dataFactoryTags.tagsSelected.forEach((element) => {
             this.matchDataSearch = this.matchDataSearch.filter(arrayElement => arrayElement !== element)
         })

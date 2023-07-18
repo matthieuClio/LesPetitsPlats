@@ -20,7 +20,7 @@ class DataFactoryReceipt {
 
     display (data) {
         // console.log(data)
-        this.rowReceipt.innerHTML = ""
+        this.rowReceipt.innerHTML = ''
 
         data.forEach(element => {
             this.rowReceipt = document.getElementById('row-receipts')
