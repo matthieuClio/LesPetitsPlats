@@ -80,12 +80,6 @@ class PrimarySearch {
             // Display the new search
             this.run(this.matchData)
 
-            // Update tags
-            // this.tags.autoUpdate(this.matchData)
-
-            // Update tags list (li) specific value already writed
-            // this.tags.searchTagsInput()
-
             // Reset the result for the new search
             this.matchData = []
 
@@ -94,12 +88,6 @@ class PrimarySearch {
 
             // Make a search with the default data
             this.run(this.data)
-
-            // Update tags
-            // this.tags.autoUpdate(this.data)
-
-            // Update tags list (li) specific value already writed
-            // this.tags.searchTagsInput()
         }
     }
 

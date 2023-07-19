@@ -8,26 +8,31 @@ class DataFactoryTags {
         this.iconColse
         this.searchInputText = document.getElementById('search-input-text')
         this.rowReceipt = document.getElementById('row-receipts')
+        this.searchIngredientsInput = document.getElementById('search-ingredients-input')
 
         // Components
         // ..........
         this.dataFactoryReceipt = new DataFactoryReceipt()
         
         // Other
-        this.ingredientsTags = []
+        this.ingredientsTagsList = []
         this.tagsSelected = []
         this.checkMatchData = []
         this.checkMatchIngredient = []
         this.matchData
+
+        this.dataSearch
+        this.matchDataSearch
     }
 
     updateData (data) {
         this.matchData = data
     }
 
+    // TO MODIFY AND DELETE
     displayIngredients (data) {
         // Reset the result for the new search
-        this.ingredientsTags = []
+        this.ingredientsTagsList = []
 
         // Build a array with sort ingredients
         data.forEach((element) => {
@@ -35,8 +40,8 @@ class DataFactoryTags {
             element.ingredients.forEach((element) => {
 
                 // Pass the items in lower case and filter duplicates
-                this.ingredientsTags = this.ingredientsTags.filter(ingredient => ingredient.toLowerCase() != element.ingredient.toLowerCase())
-                this.ingredientsTags.push(element.ingredient)
+                this.ingredientsTagsList = this.ingredientsTagsList.filter(ingredient => ingredient.toLowerCase() != element.ingredient.toLowerCase())
+                this.ingredientsTagsList.push(element.ingredient)
             })
         })
 
@@ -44,7 +49,7 @@ class DataFactoryTags {
         this.matchData = data
 
         // console.log(this.ingredientsTags)
-        this.createIngredient(this.ingredientsTags)
+        this.createIngredient(this.ingredientsTagsList)
     }
 
     createIngredient (specificData) {
@@ -74,16 +79,6 @@ class DataFactoryTags {
                     specificTags.remove()
                     this.tagsSelected = this.tagsSelected.filter(arrayElement => arrayElement !== element)
 
-                    // MOVE THIS IN REFRESHRECEIPT-----------
-                    // Filter the Ingredients list with the selected tags
-                    // this.tagsSelected.forEach((element) => {
-                    //     oldSpecificData = oldSpecificData.filter(arrayElement => arrayElement !== element)
-                    // })
-
-                    // Update the Ingredients list
-                    // this.createIngredient(oldSpecificData)
-                    // console.log(oldSpecificData)
-
                     // Update the main search (receipt)
                     this.refreshReceipt()
                 })
@@ -93,17 +88,6 @@ class DataFactoryTags {
 
                 // Array will contain all tags selected
                 this.tagsSelected.push(element)
-                // console.log(this.tagsSelected)
-
-                // MOVE THIS IN REFRESHRECEIPT-----------
-                // Filter the Ingredients list with the selected tags
-                // this.tagsSelected.forEach((element) => {
-                //     specificData = specificData.filter(arrayElement => arrayElement !== element)
-                // })
-
-                // Update the Ingredients list
-                // this.createIngredient(specificData)
-                // console.log(specificData)
 
                 // Update the main search (receipt) and ingredients list
                 this.refreshReceipt()
@@ -150,12 +134,76 @@ class DataFactoryTags {
         })
 
         // Define the new ingredients list
-        this.ingredientsTags = this.checkMatchIngredient
+        this.ingredientsTagsList = this.checkMatchIngredient
+
+        // Filter the new ingredients list by input value
+        this.filterByInput()
 
         // Refresh receipt
         this.dataFactoryReceipt.display(this.checkMatchData)
 
         // Refresh ingredient
-        this.createIngredient(this.checkMatchIngredient)
+        // this.createIngredient(this.checkMatchIngredient) - TO DELETE
+        this.createIngredient(this.matchDataSearch)
+    }
+
+    searchTagsInput () {
+        // Filter by input value
+        this.filterByInput()
+
+
+        // // Get the define tags list
+        // this.dataSearch = this.ingredientsTagsList
+
+        // console.log(this.dataSearch)
+        // this.dataSearch.forEach((element) => {
+        //     const rule = this.searchIngredientsInput.value.toLowerCase()
+        //     const regEx = RegExp(rule, 'gm')
+
+        //     const checkDataSearch = element.toLowerCase()
+        //     const ingredientResult = checkDataSearch.match(regEx)
+
+        //     if (ingredientResult != null) {
+        //         this.matchDataSearch = this.matchDataSearch.filter(ingredient => ingredient.toLowerCase() != checkDataSearch)
+                
+        //         this.matchDataSearch.push(element)
+        //     }
+        // })
+
+        // // Filter Ingredients list with the selected tags
+        // this.tagsSelected.forEach((element) => {
+        //     this.matchDataSearch = this.matchDataSearch.filter(arrayElement => arrayElement !== element)
+        // })
+        
+        this.createIngredient(this.matchDataSearch)
+        // console.log(this.matchDataSearch)
+    }
+
+    filterByInput () {
+        // Reinitialize the matchDataSearch
+        this.matchDataSearch = []
+
+        // Get the define tags list
+        this.dataSearch = this.ingredientsTagsList
+
+        console.log(this.dataSearch)
+        this.dataSearch.forEach((element) => {
+            const rule = this.searchIngredientsInput.value.toLowerCase()
+            const regEx = RegExp(rule, 'gm')
+
+            const checkDataSearch = element.toLowerCase()
+            const ingredientResult = checkDataSearch.match(regEx)
+
+            if (ingredientResult != null) {
+                this.matchDataSearch = this.matchDataSearch.filter(ingredient => ingredient.toLowerCase() != checkDataSearch)
+                
+                this.matchDataSearch.push(element)
+            }
+        })
+
+        // Filter Ingredients list with the selected tags
+        this.tagsSelected.forEach((element) => {
+            this.matchDataSearch = this.matchDataSearch.filter(arrayElement => arrayElement !== element)
+        })
     }
 }

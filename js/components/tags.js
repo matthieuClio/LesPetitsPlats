@@ -38,48 +38,50 @@ class Tags {
         this.dataFactoryTags.displayIngredients(data)
     }
 
-    autoUpdate (matchData) {
+    // TO DELETE
+    // autoUpdate (matchData) {
 
-        // Display the new search
-        this.dataFactoryTags.displayIngredients(matchData)
-    }
+    //     // Display the new search
+    //     this.dataFactoryTags.displayIngredients(matchData)
+    // }
 
     searchEvent () {
         this.searchIngredientsInput.addEventListener('keyup', () => {
-            this.searchTagsInput()
+            this.dataFactoryTags.searchTagsInput()
         })
     }
 
-    searchTagsInput () {
-        // Reinitialize the matchDataSearch
-        this.matchDataSearch = []
+    // TO DELETE
+    // searchTagsInput () {
+    //     // Reinitialize the matchDataSearch
+    //     this.matchDataSearch = []
 
-        // Get the define tags list
-        this.dataSearch = this.dataFactoryTags.ingredientsTags
+    //     // Get the define tags list
+    //     this.dataSearch = this.dataFactoryTags.ingredientsTagsList
 
-        console.log(this.dataSearch)
-        this.dataSearch.forEach((element) => {
-            const rule = this.searchIngredientsInput.value.toLowerCase()
-            const regEx = RegExp(rule, 'gm')
+    //     console.log(this.dataSearch)
+    //     this.dataSearch.forEach((element) => {
+    //         const rule = this.searchIngredientsInput.value.toLowerCase()
+    //         const regEx = RegExp(rule, 'gm')
 
-            const checkDataSearch = element.toLowerCase()
-            const ingredientResult = checkDataSearch.match(regEx)
+    //         const checkDataSearch = element.toLowerCase()
+    //         const ingredientResult = checkDataSearch.match(regEx)
 
-            if (ingredientResult != null) {
-                this.matchDataSearch = this.matchDataSearch.filter(ingredient => ingredient.toLowerCase() != checkDataSearch)
+    //         if (ingredientResult != null) {
+    //             this.matchDataSearch = this.matchDataSearch.filter(ingredient => ingredient.toLowerCase() != checkDataSearch)
                 
-                this.matchDataSearch.push(element)
-            }
-        })
+    //             this.matchDataSearch.push(element)
+    //         }
+    //     })
 
-        // Filter Ingredients list with the selected tags
-        this.dataFactoryTags.tagsSelected.forEach((element) => {
-            this.matchDataSearch = this.matchDataSearch.filter(arrayElement => arrayElement !== element)
-        })
+    //     // Filter Ingredients list with the selected tags
+    //     this.dataFactoryTags.tagsSelected.forEach((element) => {
+    //         this.matchDataSearch = this.matchDataSearch.filter(arrayElement => arrayElement !== element)
+    //     })
         
-        this.dataFactoryTags.createIngredient(this.matchDataSearch)
-        // console.log(this.matchDataSearch)
-    }
+    //     this.dataFactoryTags.createIngredient(this.matchDataSearch)
+    //     // console.log(this.matchDataSearch)
+    // }
 
     roll () {
         // Ingredients
