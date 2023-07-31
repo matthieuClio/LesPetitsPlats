@@ -19,7 +19,6 @@ class DataFactoryReceipt {
     }
 
     display (data) {
-        // console.log(data)
         this.rowReceipt.innerHTML = ''
 
         data.forEach(element => {

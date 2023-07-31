@@ -7,18 +7,15 @@ class PrimarySearch {
         // Dom elements
         this.rowReceipt = document.getElementById('row-receipts')
         this.searchInputText = document.getElementById('search-input-text')
-        this.chevronDown = document.getElementById('icon-chevron-down')
 
         // Components
         // ..........
-        // Data factory
-        // this.dataFactoryReceipt = new DataFactoryReceipt() // - TO DELETE
-        this.tags = new Tags()
+        this.tags = new TagsList()
     }  
 
     run (data) {
-        // this.dataFactoryReceipt.display(data) // - TO DELETE
-        this.tags.callMethodOtherObject(data)
+        // this.tags.callMethodOtherObject(data)
+        this.tags.refreshReceiptsTags(data)
     }
 
     handleChange () {
@@ -61,6 +58,7 @@ class PrimarySearch {
                     // Stock data specific element
                     const dataElement = element
 
+                    // Change to simple loop for !! - To change
                     element.ingredients.forEach((element, index, array) => {
                         // Regex for ingredients
                         const checkDataIngredients = element.ingredient.toLowerCase()
@@ -71,7 +69,7 @@ class PrimarySearch {
                             // console.log(checkDataIngredients)
                             this.matchData.push(dataElement)
                             
-                            // array.length = index + 1 // We stop the loop <- Issue with this line
+                            array.length = index + 1 // We stop the loop <- Issue with this line
                         }
                     })
                 }
@@ -92,7 +90,6 @@ class PrimarySearch {
     }
 
     tag () {
-        this.tags.run(this.data)
         this.tags.searchEvent()
         this.tags.roll()
     }
