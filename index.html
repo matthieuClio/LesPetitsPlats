@@ -99,7 +99,7 @@
                                 <span class="search-secondary-comp__icon-chevron-comp bi bi-chevron-compact-up position-absolute d-none" id="icon-chevron-up-appliances"></span>
                             </li>
                             <li class="mb-3 d-flex position-relative">
-                                <input type="search" class="search-secondary-comp__input-comp pt-3 pb-3 ps-2 pe-5">
+                                <input type="search" class="search-secondary-comp__input-comp pt-3 pb-3 ps-2 pe-5" id="search-appliances-input">
                                 <i class="search-secondary-comp__icon-search-comp bi bi-search position-absolute"></i>
                                 <i class="search-secondary-comp__icon-close-comp bi bi-x position-absolute"></i>
                             </li>
@@ -107,10 +107,6 @@
                             <!-- Container appliances -->
                             <li id="search-appliances-container">
                                 <!-- Li generate by JS in dataFactoryTags.js -->
-                            </li>
-
-                            <li class="search-secondary-comp__items-comp mb-1">
-                                Nom ingrédient
                             </li>
                         </ul>
 
@@ -124,7 +120,7 @@
                                 <span class="search-secondary-comp__icon-chevron-comp bi bi-chevron-compact-up position-absolute d-none" id="icon-chevron-up-utensils"></span>
                             </li>
                             <li class="mb-3 d-flex position-relative">
-                                <input type="search" class="search-secondary-comp__input-comp pt-3 pb-3 ps-2 pe-5">
+                                <input type="search" class="search-secondary-comp__input-comp pt-3 pb-3 ps-2 pe-5" id="search-utensils-input">
                                 <i class="search-secondary-comp__icon-search-comp bi bi-search position-absolute"></i>
                                 <i class="search-secondary-comp__icon-close-comp bi bi-x position-absolute"></i>
                             </li>
@@ -132,10 +128,6 @@
                             <!-- Container utensils -->
                             <li id="search-utensils-container">
                                 <!-- Li generate by JS in dataFactoryTags.js -->
-                            </li>
-
-                            <li class="search-secondary-comp__items-comp mb-1">
-                                Nom ingrédient
                             </li>
                         </ul>
                     </div>
@@ -172,7 +164,9 @@
         
         <!-- Custom JS -->
         <script src="./js/data/recipes.js"></script>
-        <script src="./js/components/factories/dataFactoryTagsList.js"></script>
+        <script src="./js/components/factories/dataFactoryUtensilsList.js"></script>
+        <script src="./js/components/factories/dataFactoryAppliancesList.js"></script>
+        <script src="./js/components/factories/dataFactoryIngredientsList.js"></script>
         <script src="./js/components/factories/dataFactoryTags.js"></script>
         <script src="./js/components/factories/dataFactoryReceipt.js"></script>
         <script src="./js/components/tagsList.js"></script>

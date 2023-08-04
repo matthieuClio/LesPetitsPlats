@@ -14,8 +14,7 @@ class PrimarySearch {
     }  
 
     run (data) {
-        // this.tags.callMethodOtherObject(data)
-        this.tags.refreshReceiptsTags(data)
+        this.tags.refreshReceipts(data)
     }
 
     handleChange () {

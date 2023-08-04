@@ -15,7 +15,5 @@ class DataFactoryTags {
 
         this.tagContainer.appendChild(this.tags)
         this.tags.appendChild(this.iconColse)
-        console.log(element)
     }
-
 }
