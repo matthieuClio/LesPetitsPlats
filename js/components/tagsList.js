@@ -21,7 +21,6 @@ class TagsList {
         this.searchUtensilsContainer = document.getElementById('search-utensils-container')
         
         this.nbReceipts = document.getElementById('nb-receipts')
-        console.log(this.nbReceipts)
 
         // Components
         // ..........
@@ -243,6 +242,8 @@ class TagsList {
 
         // Refresh receipt
         this.dataFactoryReceipt.display(this.checkMatchData)
+
+        // Refresh number of receipts (text)
         this.nbReceipts.textContent = this.checkMatchData.length
 
         // Refresh ingredient

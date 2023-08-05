@@ -24,53 +24,52 @@ class PrimarySearch {
     }
 
     search () {
+
         // Start the search after 3 characters
         if (this.searchInputText.value.length > 2) {
 
             // Check name, ingredients and description
-            this.data.forEach((element) => {
-
+            for (let i = 0; i < this.data.length -1; i++) {
                 const rule = this.searchInputText.value.toLowerCase()
                 const regex = new RegExp(rule, 'gm')
 
                 // Regex for name
-                const checkDataName = element.name.toLowerCase()
+                const checkDataName = this.data[i].name.toLowerCase()
                 const nameResult = checkDataName.match(regex)
 
                 // Regex for description
-                const checkDataDescription = element.description.toLowerCase()
+                const checkDataDescription = this.data[i].description.toLowerCase()
                 const descriptionResult = checkDataDescription.match(regex)
 
                 // If the name match we push the result
                 if (nameResult !== null) {
-                    this.matchData.push(element)
+                    this.matchData.push(this.data[i])
 
                 // If the description match we push the result
                 } else if (descriptionResult !== null) {
-                    this.matchData.push(element)
+                    this.matchData.push(this.data[i])
 
                 // Check ingredients
                 } else {
 
                     // Stock data specific element
-                    const dataElement = element
-
-                    // Change to simple loop for !! - To change
-                    element.ingredients.forEach((element, index, array) => {
+                    const dataElement = this.data[i]
+                    
+                    // Check all ingredients
+                    for (let i = 0; i < dataElement.ingredients.length -1; i++) {
                         // Regex for ingredients
-                        const checkDataIngredients = element.ingredient.toLowerCase()
+                        const checkDataIngredients = dataElement.ingredients[i].ingredient.toLowerCase()
                         const ingredientsResult = checkDataIngredients.match(regex)
 
                         // If the ingredients match we push the result if isn't already pushed
                         if (ingredientsResult !== null) {
-                            // console.log(checkDataIngredients)
+                            console.log(checkDataIngredients)
                             this.matchData.push(dataElement)
-                            
-                            array.length = index + 1 // We stop the loop <- Issue with this line
+                            break
                         }
-                    })
+                    }
                 }
-            })
+            }
 
             // Display the new search
             this.run(this.matchData)
