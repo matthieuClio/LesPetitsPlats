@@ -11932,6 +11932,10 @@ figure {
   font-size: 14px;
 }
 
+.font-family-anton {
+  font-family: "Anton-Regular";
+}
+
 header {
   position: relative;
   border: 2px solid purple;

@@ -27,7 +27,7 @@ class PrimarySearch {
         // Start the search after 3 characters
         if (this.searchInputText.value.length > 2) {
 
-            // Check the correspondence of the name, ingredients and description compared to the data
+            // Check name, ingredients and description
             this.data.forEach((element) => {
 
                 const rule = this.searchInputText.value.toLowerCase()
@@ -36,22 +36,20 @@ class PrimarySearch {
                 // Regex for name
                 const checkDataName = element.name.toLowerCase()
                 const nameResult = checkDataName.match(regex)
-                // console.log(nameResult)
 
                 // Regex for description
                 const checkDataDescription = element.description.toLowerCase()
                 const descriptionResult = checkDataDescription.match(regex)
-                // console.log(descriptionResult)
 
                 // If the name match we push the result
                 if (nameResult !== null) {
-                    // console.log(checkDataName)
                     this.matchData.push(element)
 
                 // If the description match we push the result
                 } else if (descriptionResult !== null) {
-                    // console.log(checkDataDescription)
                     this.matchData.push(element)
+
+                // Check ingredients
                 } else {
 
                     // Stock data specific element

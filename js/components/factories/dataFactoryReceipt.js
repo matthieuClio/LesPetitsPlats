@@ -2,7 +2,6 @@ class DataFactoryReceipt {
     constructor () {
         // Dom elements
         this.rowReceipt = document.getElementById('row-receipts')
-        this.rowReceipt
         this.colReceipt
         this.containerReceipt
         this.figureReceipt
@@ -22,7 +21,6 @@ class DataFactoryReceipt {
         this.rowReceipt.innerHTML = ''
 
         data.forEach(element => {
-            this.rowReceipt = document.getElementById('row-receipts')
             this.colReceipt = document.createElement('div')
             this.containerReceipt = document.createElement('div')
             this.figureReceipt = document.createElement('figure')

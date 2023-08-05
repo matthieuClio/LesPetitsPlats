@@ -20,6 +20,9 @@ class TagsList {
         this.searchAppliancesContainer = document.getElementById('search-appliances-container')
         this.searchUtensilsContainer = document.getElementById('search-utensils-container')
         
+        this.nbReceipts = document.getElementById('nb-receipts')
+        console.log(this.nbReceipts)
+
         // Components
         // ..........
         this.dataFactoryTags = new DataFactoryTags()
@@ -33,8 +36,6 @@ class TagsList {
         this.isRollAppliances = false
         this.isRollUtensils = false
 
-        // Modification
-        // ............
         this.ingredientsList = []
         this.applianceList = []
         this.utensilsList = []
@@ -48,6 +49,7 @@ class TagsList {
         this.matchDataSearchIngredients = []
         this.matchDataSearchAppliances = []
         this.matchDataSearchUtensils = []
+
         this.ingredients = 'ingredients'
         this.appliances = 'appliances'
         this.utensils = 'utensils'
@@ -68,11 +70,10 @@ class TagsList {
     }
 
     searchInputList (searchName) {
-
         // Check ingredients to filter
         if (searchName === this.ingredients) {
 
-            // Reinitialize the matchDataSearch
+            // Reinitialize the matchDataSearchIngredients
             this.matchDataSearchIngredients = []
 
             // Filter ingredient by input value
@@ -84,7 +85,7 @@ class TagsList {
         // Check appliances to filter
         } else if (searchName === this.appliances) {
 
-            // Reinitialize the matchDataSearch
+            // Reinitialize the matchDataSearchAppliances
             this.matchDataSearchAppliances = []
             
             // Filter appliances by input value
@@ -96,7 +97,7 @@ class TagsList {
         // Check utensils to filter
         } else if (searchName === this.utensils) {
             
-            // Reinitialize the matchDataSearch
+            // Reinitialize the matchDataSearchUtensils
             this.matchDataSearchUtensils = []
 
             // Filter ingredient by input value
@@ -108,7 +109,6 @@ class TagsList {
     }
 
     filterByInput (listArray, searchInput, matchDataSearch) {
-
         // build the define list
         listArray.forEach((element) => {
             const rule = searchInput.value.toLowerCase()
@@ -129,6 +129,40 @@ class TagsList {
         })
         
         return matchDataSearch
+    }
+
+    list (specificData, searchContainer, dataFactory) {
+        // Delete the old list
+        searchContainer.textContent = ''
+
+        specificData.forEach((element) => {
+            // Create ingredient list Dom element
+            dataFactory.createList(element)
+
+            // Event : create tags
+            dataFactory.li.addEventListener('click', () => {
+                // Create tag
+                this.dataFactoryTags.createTags(element)
+
+                // Define the specific tag
+                let specificTags = this.dataFactoryTags.tags
+
+                // Event : Delete tags
+                this.dataFactoryTags.iconColse.addEventListener('click', () => {
+                    specificTags.remove()
+                    this.tagsSelected = this.tagsSelected.filter(arrayElement => arrayElement !== element)
+
+                    // Update the main search (receipt) and list
+                    this.refreshReceipts(this.matchData)
+                })
+
+                // Array will contain all tags selected
+                this.tagsSelected.push(element)
+
+                // Update the main search (receipt) and list
+                this.refreshReceipts(this.matchData)
+            })
+        })
     }
 
     refreshReceipts (data) {
@@ -202,7 +236,6 @@ class TagsList {
         this.matchDataSearchAppliances = []
         this.matchDataSearchUtensils = []
 
-        // console.log(this.utensilsList)
         // Filter new lists by input value
         this.ingredientsList = this.filterByInput(this.ingredientsList, this.searchIngredientsInput, this.matchDataSearchIngredients)        
         this.applianceList = this.filterByInput(this.applianceList, this.searchAppliancesInput, this.matchDataSearchAppliances)
@@ -210,6 +243,7 @@ class TagsList {
 
         // Refresh receipt
         this.dataFactoryReceipt.display(this.checkMatchData)
+        this.nbReceipts.textContent = this.checkMatchData.length
 
         // Refresh ingredient
         this.list(this.ingredientsList, this.searchIngredientsContainer, this.dataFactoryIngredientsList)
@@ -221,49 +255,14 @@ class TagsList {
         this.list(this.utensilsList, this.searchUtensilsContainer, this.dataFactoryUtensilsList)
     }
 
-    list (specificData, searchContainer, dataFactory) {
-        
-        // Delete the old list
-        searchContainer.textContent = ''
-
-        specificData.forEach((element) => {
-            // Create ingredient list Dom element
-            dataFactory.createList(element)
-
-            // Event : create tags
-            dataFactory.li.addEventListener('click', () => {
-                // Create tag
-                this.dataFactoryTags.createTags(element)
-
-                // Define the specific tag
-                let specificTags = this.dataFactoryTags.tags
-
-                // Event : Delete tags
-                this.dataFactoryTags.iconColse.addEventListener('click', () => {
-                    specificTags.remove()
-                    this.tagsSelected = this.tagsSelected.filter(arrayElement => arrayElement !== element)
-
-                    // Update the main search (receipt) and list
-                    this.refreshReceipts(this.matchData)
-                })
-
-                // Array will contain all tags selected
-                this.tagsSelected.push(element)
-
-                // Update the main search (receipt) and list
-                this.refreshReceipts(this.matchData)
-            })
-        })
-    }
-
     roll () {
+        // Define display/hide by click event 
         this.rollRun(this.chevronDownIngredients, this.chevronUpIngredients, this.isRollIngredients, this.searchCompIngredients)
         this.rollRun(this.chevronDownAppliances, this.chevronUpAppliances, this.isRollAppliances, this.searchCompAppliances)
         this.rollRun(this.chevronDownUtensils, this.chevronUpUtensils, this.isRollUtensils, this.searchCompUtensils)
     }
 
     rollRun (chevronDown, chevronUp, isRoll, searchComp) {
-        
         // Event : show
         chevronDown.addEventListener('click', () => {
 
