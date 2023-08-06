@@ -108,15 +108,15 @@ class TagsList {
     }
 
     filterByInput (listArray, searchInput, matchDataSearch) {
-        // build the define list
+        // Build the define list
         listArray.forEach((element) => {
             const rule = searchInput.value.toLowerCase()
-            const regEx = RegExp(rule, 'gm')
+            // const regEx = RegExp(rule, 'gm')
 
             const checkDataSearch = element.toLowerCase()
-            const listResult = checkDataSearch.match(regEx)
+            // const listResult = checkDataSearch.match(regEx)
 
-            if (listResult != null) {
+            if (checkDataSearch.includes(rule)) {
                 matchDataSearch = matchDataSearch.filter(element => element.toLowerCase() != checkDataSearch)
                 matchDataSearch.push(element)
             }
