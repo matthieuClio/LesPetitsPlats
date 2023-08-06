@@ -22,6 +22,10 @@ class TagsList {
         
         this.nbReceipts = document.getElementById('nb-receipts')
 
+        this.noResultFind = document.getElementById('no-result')
+        this.userWordSearch = document.getElementById('user-word-search')
+        this.searchInputText = document.getElementById('search-input-text')
+
         // Components
         // ..........
         this.dataFactoryTags = new DataFactoryTags()
@@ -244,7 +248,7 @@ class TagsList {
         this.dataFactoryReceipt.display(this.checkMatchData)
         this.nbReceipts.textContent = this.checkMatchData.length
         this.noResult()
-
+        
         // Refresh ingredient
         this.list(this.ingredientsList, this.searchIngredientsContainer, this.dataFactoryIngredientsList)
 
@@ -257,7 +261,12 @@ class TagsList {
 
     noResult () {
         if (this.nbReceipts.textContent === '0') {
-            console.log(this.nbReceipts.textContent)
+            // Display a message
+            this.noResultFind.classList.remove('d-none')
+            this.userWordSearch.textContent = this.searchInputText.value
+        } else {
+            // Hide a message
+            this.noResultFind.classList.add('d-none')
         }
     }
 

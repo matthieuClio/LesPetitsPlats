@@ -27,26 +27,17 @@ class PrimarySearch {
         // Start the search after 3 characters
         if (this.searchInputText.value.length > 2) {
 
+            const rule = this.searchInputText.value.toLowerCase()
+
             // Check name, ingredients and description
             this.data.forEach((element) => {
 
-                const rule = this.searchInputText.value.toLowerCase()
-                const regex = new RegExp(rule, 'gm')
-
-                // Regex for name
-                const checkDataName = element.name.toLowerCase()
-                const nameResult = checkDataName.match(regex)
-
-                // Regex for description
-                const checkDataDescription = element.description.toLowerCase()
-                const descriptionResult = checkDataDescription.match(regex)
-
                 // If the name match we push the result
-                if (nameResult !== null) {
+                if (element.name.toLowerCase().includes(rule)) {
                     this.matchData.push(element)
 
                 // If the description match we push the result
-                } else if (descriptionResult !== null) {
+                } else if (element.description.toLowerCase().includes(rule)) {
                     this.matchData.push(element)
 
                 // Check ingredients
@@ -54,21 +45,16 @@ class PrimarySearch {
 
                     // Stock data specific element
                     const dataElement = element
-
-                    // Change to simple loop for !! - To change
-                    element.ingredients.forEach((element, index, array) => {
-                        // Regex for ingredients
+                    
+                    // Check ingredients
+                    let isIngredientMatch = element.ingredients.some((element) => {
                         const checkDataIngredients = element.ingredient.toLowerCase()
-                        const ingredientsResult = checkDataIngredients.match(regex)
-
-                        // If the ingredients match we push the result if isn't already pushed
-                        if (ingredientsResult !== null) {
-                            // console.log(checkDataIngredients)
-                            this.matchData.push(dataElement)
-                            
-                            array.length = index + 1 // We stop the loop <- Issue with this line
-                        }
+                        return checkDataIngredients.includes(rule);
                     })
+
+                    if (isIngredientMatch) {
+                        this.matchData.push(dataElement)
+                    }
                 }
             })
 
@@ -89,6 +75,5 @@ class PrimarySearch {
     tag () {
         this.tags.searchEvent()
         this.tags.roll()
-        // this.tags.noResult()
     }
 }
