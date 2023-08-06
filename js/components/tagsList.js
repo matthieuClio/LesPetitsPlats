@@ -21,7 +21,6 @@ class TagsList {
         this.searchUtensilsContainer = document.getElementById('search-utensils-container')
         
         this.nbReceipts = document.getElementById('nb-receipts')
-        console.log(this.nbReceipts)
 
         // Components
         // ..........
@@ -244,6 +243,7 @@ class TagsList {
         // Refresh receipt
         this.dataFactoryReceipt.display(this.checkMatchData)
         this.nbReceipts.textContent = this.checkMatchData.length
+        this.noResult()
 
         // Refresh ingredient
         this.list(this.ingredientsList, this.searchIngredientsContainer, this.dataFactoryIngredientsList)
@@ -253,6 +253,12 @@ class TagsList {
 
         // Refresh utensils
         this.list(this.utensilsList, this.searchUtensilsContainer, this.dataFactoryUtensilsList)
+    }
+
+    noResult () {
+        if (this.nbReceipts.textContent === '0') {
+            console.log(this.nbReceipts.textContent)
+        }
     }
 
     roll () {

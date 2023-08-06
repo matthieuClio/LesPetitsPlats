@@ -89,5 +89,6 @@ class PrimarySearch {
     tag () {
         this.tags.searchEvent()
         this.tags.roll()
+        // this.tags.noResult()
     }
 }
