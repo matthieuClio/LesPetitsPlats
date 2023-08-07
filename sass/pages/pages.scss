@@ -2,7 +2,6 @@
 .hero-pages {
     z-index: -1;
     position: absolute;
-    border: 2px solid blue;
     height: 100%;
     width: 100%;
 }
@@ -10,11 +9,10 @@
 .hero-pages img {
     height: 100%;
     object-fit: cover;
-    border: 2px solid green;
+    object-position: -250px;
 }
 
 .title-h2-page {
-    border: 2px solid orange;
     margin: auto;
     margin-top: 150px;
     width: 500px;
@@ -28,5 +26,5 @@
 
 .info-search-secondary {
     width: auto;
-    border: 2px solid red;
+    // border: 2px solid red;
 }

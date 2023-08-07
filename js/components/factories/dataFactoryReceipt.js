@@ -33,8 +33,9 @@ class DataFactoryReceipt {
             this.h4SecondaryReceipt = document.createElement('h4')
             this.ingredientsReceipt = document.createElement('div')
 
-            this.colReceipt.setAttribute('class', 'col-4 no-padding')
-            this.containerReceipt.setAttribute('class', 'receipt-comp rounded-3 position-relative')
+            // this.colReceipt.setAttribute('class', 'col-4 no-padding cursor-pointer')
+            this.colReceipt.setAttribute('class', 'col-4 no-padding cursor-pointer receipt-col-comp')
+            this.containerReceipt.setAttribute('class', 'receipt-comp rounded-4 position-relative overflow-hidden')
             this.figureReceipt.setAttribute('class', 'receipt-comp__figure')
             this.imgReceipt.setAttribute('class', 'receipt-comp__figure__image')
             this.timeReceipt.setAttribute('class', 'receipt-comp__time position-absolute mt-3 me-3 rounded-5 pt-1 pb-1 ps-2 pe-2')
