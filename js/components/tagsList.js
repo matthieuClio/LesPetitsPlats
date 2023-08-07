@@ -21,6 +21,10 @@ class TagsList {
         this.searchUtensilsContainer = document.getElementById('search-utensils-container')
         
         this.nbReceipts = document.getElementById('nb-receipts')
+        
+        this.noResultFind = document.getElementById('no-result')
+        this.userWordSearch = document.getElementById('user-word-search')
+        this.searchInputText = document.getElementById('search-input-text')
 
         // Components
         // ..........
