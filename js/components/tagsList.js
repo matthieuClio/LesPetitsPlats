@@ -239,9 +239,8 @@ class TagsList {
 
         // Refresh receipt
         this.dataFactoryReceipt.display(this.checkMatchData)
-
-        // Refresh number of receipts (text)
         this.nbReceipts.textContent = this.checkMatchData.length
+        this.noResult()
 
         // Refresh ingredient
         this.list(this.ingredientsList, this.searchIngredientsContainer, this.dataFactoryIngredientsList)
@@ -251,6 +250,17 @@ class TagsList {
 
         // Refresh utensils
         this.list(this.utensilsList, this.searchUtensilsContainer, this.dataFactoryUtensilsList)
+    }
+
+    noResult () {
+        if (this.nbReceipts.textContent === '0') {
+            // Display a message
+            this.noResultFind.classList.remove('d-none')
+            this.userWordSearch.textContent = this.searchInputText.value
+        } else {
+            // Hide a message
+            this.noResultFind.classList.add('d-none')
+        }
     }
 
     roll () {
